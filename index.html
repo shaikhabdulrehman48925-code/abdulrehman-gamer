@@ -141,10 +141,13 @@ function save(){try{localStorage.setItem(KEY,JSON.stringify(vids))}catch(e){}}
 function ytId(u){var m=u.match(/(?:youtu\.be\/|v=|shorts\/|embed\/|live\/)([A-Za-z0-9_-]{11})/);return m?m[1]:null}
 function el(t,cls,txt){var e=document.createElement(t);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
 
+var ready=false,st=null;
+function hit(p,t){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:p,title:t,event:true})}catch(e){}}
 function go(name){
  TABS.forEach(function(t){$(t[0]).hidden=t[0]!==name});
  [].forEach.call($('nav').children,function(b){if(b.dataset.t===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
  if(name==='profile')$('count').textContent=vids.length;
+ if(ready)hit('tab-'+name,'Tab '+name);
  if(name==='search')renderSearch();
  window.scrollTo(0,0);
 }
@@ -196,7 +199,7 @@ function renderSearch(){
  else box.appendChild(el('div','empty','Is naam ka koi saved video nahi mila.'));
  var a=el('a','btn ghost','YouTube channel pe “'+$('q').value.trim()+'” dhundo');a.href=CH+'/search?query='+encodeURIComponent(q);a.target='_blank';a.rel='noopener';a.style.cssText='display:inline-block;margin-top:16px';box.appendChild(a);
 }
-$('q').oninput=renderSearch;
+$('q').oninput=function(){renderSearch();clearTimeout(st);var v=$('q').value.trim().toLowerCase();if(v.length>1)st=setTimeout(function(){hit('search-'+v.slice(0,30),'Search: '+v.slice(0,30))},1200)};
 $('who').onchange=function(){$('chwrap').hidden=this.value!=='others'};
 $('f').onsubmit=function(e){
  e.preventDefault();var id=ytId($('url').value.trim());
@@ -212,7 +215,8 @@ $('mf').onsubmit=function(e){
  try{navigator.clipboard.writeText(text).then(function(){m.className='msg';m.textContent='Message copy ho gaya. Channel pe kisi video ke comment mein paste kar do.'},function(){m.className='msg bad';m.textContent='Copy nahi ho paya. Message ko khud select karke copy karo.'})}
  catch(x){m.className='msg bad';m.textContent='Copy nahi ho paya. Message ko khud select karke copy karo.'}
 };
-load();buildStatic();render();go('home');
+load();buildStatic();render();go('home');ready=true;
 </script>
+<script data-goatcounter="https://abdulgamer.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
