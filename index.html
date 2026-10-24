@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Abdul Rehman Gamer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#14112b;--surface:#1f1a44;--line:#342e66;--text:#f2efff;--muted:#a9a3d6;--hot:#ff5a3c;--gta:#35d0ff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Outfit',system-ui,sans-serif;line-height:1.55;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+a{color:inherit}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px}
+[hidden]{display:none!important}
+.hero{padding:48px 0 36px;border-bottom:3px solid var(--hot)}
+.hero h1{font-family:'Bungee',Impact,sans-serif;font-weight:400;font-size:clamp(2.4rem,11vw,5rem);line-height:.95;margin:0 0 16px;transform:rotate(-1.5deg);transform-origin:left}
+.hero h1 span{display:block;color:var(--hot)}
+.hero p{max-width:34em;color:var(--muted);font-size:1.1rem;margin:0 0 24px}
+.btn{display:inline-block;background:var(--hot);color:#fff;text-decoration:none;padding:13px 22px;border-radius:6px;border:0;font:inherit;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;border:2px solid var(--line);color:var(--text)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gta);outline-offset:2px}
+section.pad{padding:34px 0}
+h2{font-family:'Bungee',Impact,sans-serif;font-weight:400;font-size:1.7rem;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 20px}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.game{display:block;text-decoration:none;background:var(--surface);border-left:8px solid var(--c);padding:18px 16px;border-radius:4px 12px 12px 4px}
+.game b{font-family:'Bungee',Impact,sans-serif;font-weight:400;font-size:1.25rem;color:var(--c);display:block}
+.game small{color:var(--muted)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tab{background:var(--surface);color:var(--text);border:2px solid var(--line);border-radius:999px;padding:7px 16px;font:inherit;font-weight:600;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--hot);border-color:var(--hot)}
+h3{font-size:1.1rem;margin:22px 0 10px;color:var(--muted)}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.vid{background:var(--surface);border-radius:10px;overflow:hidden;border-top:5px solid var(--c)}
+.vid .thumb{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:var(--bg);border:0;width:100%;cursor:pointer;color:var(--c);font-size:2.6rem}
+.vid iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+.vid .info{padding:12px 14px}
+.vid .t{font-weight:700;margin:0 0 4px;overflow-wrap:anywhere}
+.vid .m{font-size:.85rem;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.vid .m a{color:var(--text)}
+.vid .m button{background:none;border:0;color:var(--hot);cursor:pointer;font:inherit;padding:0}
+.empty{color:var(--muted);border:2px dashed var(--line);border-radius:10px;padding:22px;text-align:center}
+form{background:var(--surface);border-radius:12px;padding:18px;display:grid;gap:12px;margin-top:8px}
+label{display:grid;gap:5px;font-weight:600;font-size:.95rem}
+input,select,textarea{background:var(--bg);color:var(--text);border:2px solid var(--line);border-radius:6px;padding:11px;font:inherit;width:100%}
+textarea{min-height:130px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.msg{min-height:1.3em;margin:0;color:var(--gta)}
+.msg.bad{color:var(--hot)}
+.profile{text-align:center;padding:40px 0 20px}
+.avatar{width:112px;height:112px;border-radius:50%;margin:0 auto 14px;background:var(--hot);display:flex;align-items:center;justify-content:center;font-family:'Bungee',Impact,sans-serif;font-size:2.6rem;border:5px solid var(--surface);box-shadow:0 0 0 3px var(--hot)}
+.profile h2{font-size:1.8rem}
+.handle{color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+.chip{border:2px solid var(--c);color:var(--c);border-radius:999px;padding:4px 14px;font-weight:700}
+.stat{display:inline-block;background:var(--surface);border-radius:10px;padding:10px 22px;margin:8px 0 20px}
+.stat b{display:block;font-family:'Bungee',Impact,sans-serif;font-weight:400;font-size:1.6rem}
+.profile .btns{justify-content:center}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:2px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);align-items:end}
+nav button{background:none;border:0;color:var(--muted);font:inherit;font-size:.75rem;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;cursor:pointer}
+nav button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav button[aria-current="page"]{color:var(--hot)}
+nav button.mid{color:#fff}
+nav button.mid svg{width:58px;height:58px;padding:15px;background:var(--hot);border-radius:50%;margin-top:-28px;border:4px solid var(--surface)}
+nav button.mid[aria-current="page"] svg{background:#ff7a5e}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<main>
+<div id="home">
+<header class="hero"><div class="wrap">
+<h1>Abdul Rehman <span>Gamer</span></h1>
+<p>Free Fire, BGMI, Minecraft aur GTA V ke gameplay videos. Yahan meri channel ke videos aur dusre creators ke best videos ek jagah milenge.</p>
+<div class="btns"><a class="btn" href="https://www.youtube.com/@AbdulRehman-Gamer-2008?sub_confirmation=1" target="_blank" rel="noopener">Channel subscribe karo</a><button class="btn ghost" type="button" data-go="video">Videos dekho</button></div>
+</div></header>
+<section class="pad wrap"><h2>Meri games</h2><p class="sub">Game pe tap karo, channel ke us game ke videos khul jayenge.</p><div class="games" id="games"></div></section>
+</div>
+
+<div id="video" hidden><section class="pad wrap">
+<h2>Videos</h2><p class="sub">Mere videos aur dusre creators ke videos, game ke hisaab se.</p>
+<div class="tabs" id="tabs" role="group" aria-label="Game filter"></div>
+<div id="mine"></div><div id="others"></div>
+<h3>Video jodo</h3>
+<form id="f">
+<label>YouTube link<input id="url" type="url" inputmode="url" placeholder="https://youtu.be/..." required></label>
+<label>Video ka naam<input id="title" type="text" maxlength="80" placeholder="Jaise: BGMI Conqueror push" required></label>
+<div class="row"><label>Game<select id="game"></select></label><label>Kiska video?<select id="who"><option value="mine">Mera</option><option value="others">Dusre creator ka</option></select></label></div>
+<label id="chwrap" hidden>Creator ka naam<input id="creator" type="text" maxlength="40" placeholder="Jaise: Total Gaming"></label>
+<p class="msg bad" id="err" role="alert"></p>
+<button class="btn" type="submit">Video jodo</button>
+</form>
+</section></div>
+
+<div id="message" hidden><section class="pad wrap">
+<h2>Message karo</h2><p class="sub">Abdul Rehman ko apna sawal, collab idea ya feedback bhejo.</p>
+<form id="mf">
+<label>Aapka naam<input id="mname" type="text" maxlength="40" required></label>
+<label>Message<textarea id="mtext" maxlength="500" required></textarea></label>
+<p class="msg" id="mmsg" role="status"></p>
+<button class="btn" type="submit" id="msend">Message bhejo</button>
+</form>
+</section></div>
+
+<div id="search" hidden><section class="pad wrap">
+<h2>Search</h2><p class="sub">Video, game ya creator ka naam likho.</p>
+<input id="q" type="search" placeholder="Jaise: BGMI" aria-label="Search" autocomplete="off">
+<div id="sres" style="margin-top:18px"></div>
+</section></div>
+
+<div id="profile" hidden><section class="wrap profile">
+<div class="avatar" aria-hidden="true">AR</div>
+<h2>Abdul Rehman</h2>
+<p class="handle">@AbdulRehman-Gamer-2008</p>
+<p class="sub">Gaming creator. Free Fire, BGMI, Minecraft aur GTA V pe videos banata hoon.</p>
+<div class="chips" id="chips"></div>
+<div class="stat"><b id="count">0</b>videos is website pe</div>
+<div class="btns"><a class="btn" href="https://www.youtube.com/@AbdulRehman-Gamer-2008?sub_confirmation=1" target="_blank" rel="noopener">Subscribe karo</a><a class="btn ghost" href="https://www.youtube.com/@AbdulRehman-Gamer-2008" target="_blank" rel="noopener">Channel kholo</a></div>
+</section></div>
+</main>
+
+<nav aria-label="Main"><div class="in" id="nav"></div></nav>
+
+<script>
+var CH='https://www.youtube.com/@AbdulRehman-Gamer-2008';
+var WA=''; /* WhatsApp number, jaise 919876543210. Khali hai to message copy hota hai */
+var GAMES=[{id:'ff',n:'Free Fire',c:'#ff8a1f',q:'Free Fire'},{id:'bgmi',n:'BGMI',c:'#f5c518',q:'BGMI'},{id:'mc',n:'Minecraft',c:'#4cd964',q:'Minecraft'},{id:'gta',n:'GTA V',c:'#35d0ff',q:'GTA V'}];
+var ICON={home:'<path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',video:'<rect x="3" y="5" width="13" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',message:'<path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/>',profile:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'};
+var TABS=[['home','Home'],['video','Video'],['message','Message'],['search','Search'],['profile','Profile']];
+var KEY='arg-videos',vids=[],filter='all';
+function $(i){return document.getElementById(i)}
+function gm(id){return GAMES.filter(function(g){return g.id===id})[0]}
+function load(){try{vids=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){vids=[]}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(vids))}catch(e){}}
+function ytId(u){var m=u.match(/(?:youtu\.be\/|v=|shorts\/|embed\/|live\/)([A-Za-z0-9_-]{11})/);return m?m[1]:null}
+function el(t,cls,txt){var e=document.createElement(t);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+
+function go(name){
+ TABS.forEach(function(t){$(t[0]).hidden=t[0]!==name});
+ [].forEach.call($('nav').children,function(b){if(b.dataset.t===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+ if(name==='profile')$('count').textContent=vids.length;
+ if(name==='search')renderSearch();
+ window.scrollTo(0,0);
+}
+function buildStatic(){
+ TABS.forEach(function(t,i){
+  var b=el('button',i===2?'mid':'');b.type='button';b.dataset.t=t[0];
+  b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+ICON[t[0]]+'</svg>';
+  if(i!==2)b.appendChild(el('span',null,t[1]));else b.setAttribute('aria-label','Message');
+  b.onclick=function(){go(t[0])};$('nav').appendChild(b);
+ });
+ [].forEach.call(document.querySelectorAll('[data-go]'),function(b){b.onclick=function(){go(b.dataset.go)}});
+ GAMES.forEach(function(x){
+  var a=el('a','game');a.href=CH+'/search?query='+encodeURIComponent(x.q);a.target='_blank';a.rel='noopener';a.style.setProperty('--c',x.c);
+  a.appendChild(el('b',null,x.n));a.appendChild(el('small',null,'Channel pe videos dekho'));$('games').appendChild(a);
+  var o=el('option',null,x.n);o.value=x.id;$('game').appendChild(o);
+  var c=el('span','chip',x.n);c.style.setProperty('--c',x.c);$('chips').appendChild(c);
+ });
+ [{id:'all',n:'Sab'}].concat(GAMES).forEach(function(x){
+  var b=el('button','tab',x.n);b.type='button';b.setAttribute('aria-pressed',x.id===filter);
+  b.onclick=function(){filter=x.id;[].forEach.call($('tabs').children,function(c){c.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');render()};
+  $('tabs').appendChild(b);
+ });
+}
+function card(v){
+ var g=gm(v.game),d=el('div','vid');d.style.setProperty('--c',g.c);
+ var th=el('button','thumb','▶');th.type='button';th.setAttribute('aria-label','Video chalao: '+v.title);
+ th.onclick=function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.id+'?autoplay=1';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=v.title;d.replaceChild(f,th)};
+ var i=el('div','info');i.appendChild(el('p','t',v.title));
+ var m=el('div','m');m.appendChild(el('span',null,g.n+(v.creator?' · '+v.creator:'')));
+ var a=el('a',null,'YouTube pe kholo');a.href='https://www.youtube.com/watch?v='+v.id;a.target='_blank';a.rel='noopener';m.appendChild(a);
+ var r=el('button',null,'Hatao');r.type='button';r.onclick=function(){vids=vids.filter(function(x){return x!==v});save();render();renderSearch()};m.appendChild(r);
+ i.appendChild(m);d.appendChild(th);d.appendChild(i);return d;
+}
+function fill(box,title,list,msg){
+ box.textContent='';box.appendChild(el('h3',null,title));
+ if(!list.length){box.appendChild(el('div','empty',msg));return}
+ var w=el('div','vids');list.forEach(function(v){w.appendChild(card(v))});box.appendChild(w);
+}
+function render(){
+ var l=vids.filter(function(v){return filter==='all'||v.game===filter});
+ fill($('mine'),'Mere videos',l.filter(function(v){return v.who==='mine'}),'Abhi is game ka koi video nahi hai. Neeche “Video jodo” se apna video daalo.');
+ fill($('others'),'Dusre creators ke videos',l.filter(function(v){return v.who==='others'}),'Abhi koi video nahi hai. Kisi aur creator ka link neeche jodo.');
+}
+function renderSearch(){
+ var q=$('q').value.trim().toLowerCase(),box=$('sres');box.textContent='';
+ if(!q){box.appendChild(el('div','empty','Upar kuch likho, saved videos yahan dikhenge.'));return}
+ var l=vids.filter(function(v){return (v.title+' '+gm(v.game).n+' '+(v.creator||'')).toLowerCase().indexOf(q)>-1});
+ if(l.length){var w=el('div','vids');l.forEach(function(v){w.appendChild(card(v))});box.appendChild(w)}
+ else box.appendChild(el('div','empty','Is naam ka koi saved video nahi mila.'));
+ var a=el('a','btn ghost','YouTube channel pe “'+$('q').value.trim()+'” dhundo');a.href=CH+'/search?query='+encodeURIComponent(q);a.target='_blank';a.rel='noopener';a.style.cssText='display:inline-block;margin-top:16px';box.appendChild(a);
+}
+$('q').oninput=renderSearch;
+$('who').onchange=function(){$('chwrap').hidden=this.value!=='others'};
+$('f').onsubmit=function(e){
+ e.preventDefault();var id=ytId($('url').value.trim());
+ if(!id){$('err').textContent='Ye YouTube link sahi nahi lag raha. Poora link paste karo.';return}
+ $('err').textContent='';
+ vids.unshift({id:id,title:$('title').value.trim(),game:$('game').value,who:$('who').value,creator:$('who').value==='others'?$('creator').value.trim():''});
+ save();this.reset();$('chwrap').hidden=true;render();
+};
+$('mf').onsubmit=function(e){
+ e.preventDefault();
+ var text='Hi Abdul! Main '+$('mname').value.trim()+'. '+$('mtext').value.trim(),m=$('mmsg');
+ if(WA){window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(text),'_blank','noopener');m.className='msg';m.textContent='WhatsApp khul raha hai. Wahan “Send” dabao.';return}
+ try{navigator.clipboard.writeText(text).then(function(){m.className='msg';m.textContent='Message copy ho gaya. Channel pe kisi video ke comment mein paste kar do.'},function(){m.className='msg bad';m.textContent='Copy nahi ho paya. Message ko khud select karke copy karo.'})}
+ catch(x){m.className='msg bad';m.textContent='Copy nahi ho paya. Message ko khud select karke copy karo.'}
+};
+load();buildStatic();render();go('home');
+</script>
+</body>
+</html>
