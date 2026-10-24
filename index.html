@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<title>Abdul Rehman Gamer</title>
+<title>Abdul Rehman Gamer | GTA 5, BGMI, Free Fire, Minecraft Gameplay in Hindi</title>
+<meta name="description" content="Abdul Rehman Gamer ke GTA 5, BGMI, Free Fire aur Minecraft gameplay videos Hindi mein. Channel subscribe karo aur naye videos dekho.">
+<link rel="canonical" href="https://shaikhabdulrehman48925-code.github.io/abdulrehman-gamer/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abdul Rehman Gamer | GTA 5, BGMI, Free Fire, Minecraft Gameplay in Hindi">
+<meta property="og:description" content="Abdul Rehman Gamer ke GTA 5, BGMI, Free Fire aur Minecraft gameplay videos Hindi mein. Channel subscribe karo aur naye videos dekho.">
+<meta property="og:url" content="https://shaikhabdulrehman48925-code.github.io/abdulrehman-gamer/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -134,6 +140,8 @@ var GAMES=[{id:'ff',n:'Free Fire',c:'#ff8a1f',q:'Free Fire'},{id:'bgmi',n:'BGMI'
 var ICON={home:'<path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>',video:'<rect x="3" y="5" width="13" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',message:'<path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/>',profile:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'};
 var TABS=[['home','Home'],['video','Video'],['message','Message'],['search','Search'],['profile','Profile']];
 var KEY='arg-videos',vids=[],filter='all';
+var SEED=[{id:'vII95BsyDvY',title:'GTA 5 PART 1 - Michael Ki Pehli Chori | GTA 5 Gameplay in Hindi',game:'gta',who:'mine',creator:'',seed:true},{id:'bWCW6a_-NZ0',title:'I Built a CUTE CAT HOUSE in Minecraft!',game:'mc',who:'mine',creator:'',seed:true}];
+function all(){return SEED.concat(vids)}
 function $(i){return document.getElementById(i)}
 function gm(id){return GAMES.filter(function(g){return g.id===id})[0]}
 function load(){try{vids=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){vids=[]}}
@@ -146,7 +154,7 @@ function hit(p,t){try{if(window.goatcounter&&window.goatcounter.count)window.goa
 function go(name){
  TABS.forEach(function(t){$(t[0]).hidden=t[0]!==name});
  [].forEach.call($('nav').children,function(b){if(b.dataset.t===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
- if(name==='profile')$('count').textContent=vids.length;
+ if(name==='profile')$('count').textContent=all().length;
  if(ready)hit('tab-'+name,'Tab '+name);
  if(name==='search')renderSearch();
  window.scrollTo(0,0);
@@ -174,11 +182,11 @@ function buildStatic(){
 function card(v){
  var g=gm(v.game),d=el('div','vid');d.style.setProperty('--c',g.c);
  var th=el('button','thumb','▶');th.type='button';th.setAttribute('aria-label','Video chalao: '+v.title);
- th.onclick=function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+v.id+'?autoplay=1';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=v.title;d.replaceChild(f,th)};
+ th.onclick=function(){var f=document.createElement('iframe');f.referrerPolicy='strict-origin-when-cross-origin';f.src='https://www.youtube.com/embed/'+v.id+'?autoplay=1&playsinline=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=v.title;d.replaceChild(f,th)};
  var i=el('div','info');i.appendChild(el('p','t',v.title));
  var m=el('div','m');m.appendChild(el('span',null,g.n+(v.creator?' · '+v.creator:'')));
  var a=el('a',null,'YouTube pe kholo');a.href='https://www.youtube.com/watch?v='+v.id;a.target='_blank';a.rel='noopener';m.appendChild(a);
- var r=el('button',null,'Hatao');r.type='button';r.onclick=function(){vids=vids.filter(function(x){return x!==v});save();render();renderSearch()};m.appendChild(r);
+ if(!v.seed){var r=el('button',null,'Hatao');r.type='button';r.onclick=function(){vids=vids.filter(function(x){return x!==v});save();render();renderSearch()};m.appendChild(r)}
  i.appendChild(m);d.appendChild(th);d.appendChild(i);return d;
 }
 function fill(box,title,list,msg){
@@ -187,14 +195,14 @@ function fill(box,title,list,msg){
  var w=el('div','vids');list.forEach(function(v){w.appendChild(card(v))});box.appendChild(w);
 }
 function render(){
- var l=vids.filter(function(v){return filter==='all'||v.game===filter});
+ var l=all().filter(function(v){return filter==='all'||v.game===filter});
  fill($('mine'),'Mere videos',l.filter(function(v){return v.who==='mine'}),'Abhi is game ka koi video nahi hai. Neeche “Video jodo” se apna video daalo.');
  fill($('others'),'Dusre creators ke videos',l.filter(function(v){return v.who==='others'}),'Abhi koi video nahi hai. Kisi aur creator ka link neeche jodo.');
 }
 function renderSearch(){
  var q=$('q').value.trim().toLowerCase(),box=$('sres');box.textContent='';
  if(!q){box.appendChild(el('div','empty','Upar kuch likho, saved videos yahan dikhenge.'));return}
- var l=vids.filter(function(v){return (v.title+' '+gm(v.game).n+' '+(v.creator||'')).toLowerCase().indexOf(q)>-1});
+ var l=all().filter(function(v){return (v.title+' '+gm(v.game).n+' '+(v.creator||'')).toLowerCase().indexOf(q)>-1});
  if(l.length){var w=el('div','vids');l.forEach(function(v){w.appendChild(card(v))});box.appendChild(w)}
  else box.appendChild(el('div','empty','Is naam ka koi saved video nahi mila.'));
  var a=el('a','btn ghost','YouTube channel pe “'+$('q').value.trim()+'” dhundo');a.href=CH+'/search?query='+encodeURIComponent(q);a.target='_blank';a.rel='noopener';a.style.cssText='display:inline-block;margin-top:16px';box.appendChild(a);
